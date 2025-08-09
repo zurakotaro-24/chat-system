@@ -1,0 +1,58 @@
+## Ignore Visual Studio temporary files, build results, and user-specific files
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+
+# Visual Studio folder
+.vs/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Backup & temporary files
+*.tmp
+*.log
+*.bak
+*.backup
+*.cache
+
+# Auto-generated files
+*.designer.cs
+*_i.c
+*_p.c
+*_h.h
+*.g.*
+*.generated.cs
+
+# NuGet packages
+*.nupkg
+**/packages/*
+!**/packages/build/
+*.snupkg
+
+# Rider IDE files
+.idea/
+
+# ASP.NET temporary files
+aspnet_client/
+
+# Publish output
+publish/
+wwwroot/dist/
+wwwroot/node_modules/
+
+# Node modules (if using npm in Blazor project)
+node_modules/
+
+# Visual Studio Code settings (optional, if you use VSCode too)
+.vscode/
+
+# Docker files (optional)
+*.dockerfile
+docker-compose.override.yml
