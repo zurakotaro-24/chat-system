@@ -1,0 +1,35 @@
+﻿@model List<ChatSystem.Models.Item>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Index</h3>
+<a asp-action="Create" class="btn btn-primary">Add Item</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.name</td>
+                <td>$@item.price.ToString("N2")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

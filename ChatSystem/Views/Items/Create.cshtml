@@ -1,0 +1,17 @@
+﻿@model ChatSystem.Models.Item;
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h3>Create an Item</h3>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="name">Name: </label>
+        <input type="text" class="form-control" asp-for="name"/>
+        <label for="price">Price: </label>
+        <input type="number" class="form-control" asp-for="price" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

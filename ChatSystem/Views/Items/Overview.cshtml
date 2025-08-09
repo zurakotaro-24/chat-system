@@ -1,7 +1,21 @@
 ﻿@model ChatSystem.Models.Item;
 
 @{
-
+    var items = new List<string> { "Items1", "Items2", "Items3" };
 }
 
 <p>This is the name of the item @Model.name @Model.id</p>
+
+<ul>
+    @foreach(var item in items)
+    {
+        <li>@item</li>
+    }
+</ul>
+
+<form asp-action="Submit">
+    <div>
+        <input asp-for="name" />
+    </div>
+    <button type="submit">Submit</button>
+</form>
