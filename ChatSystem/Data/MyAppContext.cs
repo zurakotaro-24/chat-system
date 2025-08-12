@@ -47,6 +47,7 @@ namespace ChatSystem.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<ItemClient> ItemClients { get; set; }
-
+        public DbSet<UserAccount> UserAccounts { get; set; }
+        public DbSet<UserInformation> UserInformations { get; set; }
     }
 }
