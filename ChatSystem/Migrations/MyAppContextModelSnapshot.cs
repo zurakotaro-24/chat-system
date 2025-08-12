@@ -21,7 +21,7 @@ namespace ChatSystem.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ChatSystem.Models.Item", b =>
+            modelBuilder.Entity("ChatSystem.Models.Category", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -33,12 +33,176 @@ namespace ChatSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("price")
-                        .HasColumnType("float");
+                    b.HasKey("id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            name = "electronics"
+                        },
+                        new
+                        {
+                            id = 2,
+                            name = "books"
+                        });
+                });
+
+            modelBuilder.Entity("ChatSystem.Models.Client", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
+                    b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("ChatSystem.Models.Item", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int?>("categoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("price")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("serialNumberId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("categoryId");
+
                     b.ToTable("Items");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 5,
+                            name = "controller",
+                            price = 321.69,
+                            serialNumberId = 10
+                        });
+                });
+
+            modelBuilder.Entity("ChatSystem.Models.ItemClient", b =>
+                {
+                    b.Property<int>("itemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("clientId")
+                        .HasColumnType("int");
+
+                    b.HasKey("itemId", "clientId");
+
+                    b.HasIndex("clientId");
+
+                    b.ToTable("ItemClients");
+                });
+
+            modelBuilder.Entity("ChatSystem.Models.SerialNumber", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int?>("itemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("itemId")
+                        .IsUnique()
+                        .HasFilter("[itemId] IS NOT NULL");
+
+                    b.ToTable("SerialNumbers");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 10,
+                            itemId = 5,
+                            name = "cont"
+                        });
+                });
+
+            modelBuilder.Entity("ChatSystem.Models.Item", b =>
+                {
+                    b.HasOne("ChatSystem.Models.Category", "category")
+                        .WithMany("items")
+                        .HasForeignKey("categoryId");
+
+                    b.Navigation("category");
+                });
+
+            modelBuilder.Entity("ChatSystem.Models.ItemClient", b =>
+                {
+                    b.HasOne("ChatSystem.Models.Client", "client")
+                        .WithMany("itemClients")
+                        .HasForeignKey("clientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ChatSystem.Models.Item", "item")
+                        .WithMany("itemClients")
+                        .HasForeignKey("itemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("client");
+
+                    b.Navigation("item");
+                });
+
+            modelBuilder.Entity("ChatSystem.Models.SerialNumber", b =>
+                {
+                    b.HasOne("ChatSystem.Models.Item", "item")
+                        .WithOne("serialNumber")
+                        .HasForeignKey("ChatSystem.Models.SerialNumber", "itemId");
+
+                    b.Navigation("item");
+                });
+
+            modelBuilder.Entity("ChatSystem.Models.Category", b =>
+                {
+                    b.Navigation("items");
+                });
+
+            modelBuilder.Entity("ChatSystem.Models.Client", b =>
+                {
+                    b.Navigation("itemClients");
+                });
+
+            modelBuilder.Entity("ChatSystem.Models.Item", b =>
+                {
+                    b.Navigation("itemClients");
+
+                    b.Navigation("serialNumber");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,8 +10,14 @@
     <div class="form-group">
         <label for="name">Name: </label>
         <input type="text" class="form-control" asp-for="name"/>
+    </div>
+    <div class="form-group">
         <label for="price">Price: </label>
         <input type="number" class="form-control" asp-for="price" />
+    </div>
+    <div class="form-group">
+        <label for="categoryId">Category</label>
+        <select asp-for="categoryId" asp-items="ViewBag.Categories" class="form-control"></select>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

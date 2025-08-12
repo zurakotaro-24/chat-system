@@ -1,6 +1,7 @@
 ﻿using ChatSystem.Data;
 using ChatSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChatSystem.Controllers
@@ -16,18 +17,23 @@ namespace ChatSystem.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var item = await _context.Items.ToListAsync();
-
+            var item = await _context.Items
+                .Include(s => s.serialNumber)
+                .Include(c => c.category)
+                .Include(ic => ic.itemClients)
+                .ThenInclude(c => c.client)
+                .ToListAsync();
             return View(item);
         }
 
         public IActionResult Create()
         {
+            ViewData["Categories"] = new SelectList(_context.Categories, "id", "name");
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("id, name, price")] Item item)
+        public async Task<IActionResult> Create([Bind("id, name, price, categoryId")] Item item)
         {
             if(ModelState.IsValid)
             {
@@ -40,12 +46,13 @@ namespace ChatSystem.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
+            ViewData["Categories"] = new SelectList(_context.Categories, "id", "name");
             var item = await _context.Items.FirstOrDefaultAsync(x => x.id == id);
             return View(item);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("id, name, price")] Item item)
+        public async Task<IActionResult> Edit(int id, [Bind("id, name, price, categoryId")] Item item)
         {
             if(ModelState.IsValid)
             {
