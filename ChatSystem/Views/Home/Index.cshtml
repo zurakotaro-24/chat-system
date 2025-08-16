@@ -1,8 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using Azure.Core
+@model ChatSystem.Models.UserAccount;
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{
+    ViewData["Title"] = "Log in Page";
+}
+<div id="page-center">
+    <div id="login-box">
+        <h3>Log-in Form</h3>
+        <form class="login-form">
+            <div>
+                <label>Username</label>
+                <span> : </span>
+                <input />
+            </div>
+            <div>
+                <label>Password</label>
+                <span> : </span>
+                <input />
+            </div>
+        </form>
+        <div class="login-button">
+            <a id="login-button" class="btn btn-primary">Log in</a>
+        </div>
+        <div class="no-account-yet">
+            <p>No account yet? <a asp-controller="Home" asp-action="Signup">Click Here</a></p>
+        </div>
+    </div>
 </div>

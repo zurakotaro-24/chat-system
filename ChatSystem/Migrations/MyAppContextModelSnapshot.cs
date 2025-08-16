@@ -168,6 +168,14 @@ namespace ChatSystem.Migrations
                     b.HasKey("id");
 
                     b.ToTable("UserAccounts");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            password = "pass",
+                            username = "user"
+                        });
                 });
 
             modelBuilder.Entity("ChatSystem.Models.UserInformation", b =>
@@ -203,6 +211,17 @@ namespace ChatSystem.Migrations
                     b.HasKey("id");
 
                     b.ToTable("UserInformations");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            birthday = new DateOnly(2003, 2, 24),
+                            firstName = "First",
+                            lastName = "Last",
+                            middleName = "Middle",
+                            sex = "Male"
+                        });
                 });
 
             modelBuilder.Entity("ChatSystem.Models.Item", b =>

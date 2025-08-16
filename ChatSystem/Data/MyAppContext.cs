@@ -39,6 +39,14 @@ namespace ChatSystem.Data
                 new Category { id = 2, name= "books" }
                 );
 
+            modelBuilder.Entity<UserInformation>().HasData(
+                new UserInformation { id = 1, firstName = "First", lastName = "Last", middleName = "Middle", extensionName = null, sex = "Male", birthday = new DateOnly(2003, 02, 24) }
+                );
+
+            modelBuilder.Entity<UserAccount>().HasData(
+                new UserAccount { id = 1, username = "user", password = "pass" }
+                );
+
             base.OnModelCreating(modelBuilder);
         }
 

@@ -1,0 +1,66 @@
+﻿@model ChatSystem.Models.SignUpModel;
+
+@{
+    ViewData["Title"] = "Sign up Form";
+}
+
+<div class="signup-form">
+    <form asp-action="SignUp" method="post">
+        <h3>Signup Form</h3>
+        <div class="account-info">
+            <h5>Account Information</h5>
+            <div class="acc-div">
+                <label asp-for="userAcc.username">Username</label>
+                <span>:</span>
+                <input type="text" asp-for="userAcc.username" />
+            </div>
+            <div class="acc-div">
+                <label asp-for="userAcc.password">Password</label>
+                <span>:</span>
+                <input type="text" asp-for="userAcc.password" />
+            </div>
+        </div>
+        <div class="personal-info">
+            <h5>Personal Information</h5>
+            <div class="personal-info-name">
+                <div class="col-2">
+                    <label asp-for="userInfo.lastName">Last Name</label>
+                    <span>:</span>
+                    <input type="text" asp-for="userInfo.lastName"/>
+                </div>
+                <div class="col-2">
+                    <label asp-for="userInfo.firstName">First Name</label>
+                    <span>:</span>
+                    <input type="text" asp-for="userInfo.firstName" />
+                </div>
+                <div class="col-2">
+                    <label asp-for="userInfo.middleName">Middle Name</label>
+                    <span>:</span>
+                    <input type="text" asp-for="userInfo.middleName" />
+                </div>
+                <div class="col-1">
+                    <label id="ext-label" asp-for="userInfo.extensionName">Ext. Name</label>
+                    <span>:</span>
+                    <input id="ext-input" type="text" asp-for="userInfo.extensionName" />
+                </div>
+            </div>
+            <div class="personal-info-others">
+                <div class="col-2">
+                    <label asp-for="userInfo.sex">Sex</label>
+                    <span>:</span>
+                    <input type="text" asp-for="userInfo.sex" />
+                </div>
+                <div class="col-2">
+                    <label asp-for="userInfo.birthday">Birthday</label>
+                    <span>:</span>
+                    <input type="date" asp-for="userInfo.birthday"/>
+                </div>
+                <div class="col-2">
+                </div>
+                <div class="col-1">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

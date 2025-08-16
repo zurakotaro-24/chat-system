@@ -1,0 +1,58 @@
+﻿#login-box {
+    position: center;
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+#login-box h3 {
+    justify-self: center;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+#page-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+}
+
+.login-form {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.login-form label {
+    width: 75px;
+    text-align: left;
+    margin: 5px;
+    font-size: large;
+}
+
+.login-form span {
+    display: inline-block;
+    width: 15px;
+    text-align:center;
+}
+
+.login-form input {
+    flex: 1;
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.no-account-yet {
+    margin: 10px;
+    padding: 10px;
+}

@@ -1,0 +1,65 @@
+﻿.signup-form {
+    border: 5px solid;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Nunito', sans-serif;
+}
+
+.account-info {
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Nunito', sans-serif;
+    margin: 10px;
+}
+
+label {
+    margin: 10px;
+    width: 100px;
+}
+
+.personal-info {
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Nunito', sans-serif;
+    margin: 10px;
+}
+
+.personal-info-name {
+    display: flex;
+}
+
+.personal-info-name input {
+    width: 150px;
+}
+
+#ext-label {
+    width: 80px;
+}
+
+#ext-input {
+    width: 50px;
+}
+
+.personal-info-others {
+    display: flex;
+}
+
+.personal-info-others input {
+    width: 150px;
+}
+
+.col-1 {
+    flex: 1 1 calc(100% * 1 / 7);
+}
+
+.col-2 {
+    flex: 1 1 calc(100% * 2 / 7);
+}
