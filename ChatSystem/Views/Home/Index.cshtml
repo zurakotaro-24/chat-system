@@ -7,21 +7,21 @@
 <div id="page-center">
     <div id="login-box">
         <h3>Log-in Form</h3>
-        <form class="login-form">
+        <form class="login-form" asp-action="Index" method="post">
             <div>
                 <label>Username</label>
                 <span> : </span>
-                <input />
+                <input asp-for="username"/>
             </div>
             <div>
                 <label>Password</label>
                 <span> : </span>
-                <input />
+                <input asp-for="password" />
+            </div>
+            <div class="login-button">
+                <button type="submit" id="login-button" class="btn btn-primary">Log in</button>
             </div>
         </form>
-        <div class="login-button">
-            <a id="login-button" class="btn btn-primary">Log in</a>
-        </div>
         <div class="no-account-yet">
             <p>No account yet? <a asp-controller="Home" asp-action="Signup">Click Here</a></p>
         </div>

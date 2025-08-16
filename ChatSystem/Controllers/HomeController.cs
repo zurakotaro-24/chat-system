@@ -26,6 +26,26 @@ namespace ChatSystem.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Index([Bind("username, password")] UserAccount userAccount)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _context.UserAccounts
+                    .FirstOrDefaultAsync(u => u.username ==  userAccount.username && u.password == userAccount.password);
+                if(user != null)
+                {
+                    Console.WriteLine("Naglogin par");
+                    return RedirectToAction("Messages");
+                }
+                else
+                {
+                    Console.WriteLine("Di naglog in");
+                }
+            }
+            return View(userAccount);
+        }
+
         public IActionResult Signup()
         {
             var model = new SignUpModel()

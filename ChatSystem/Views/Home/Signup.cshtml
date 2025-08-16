@@ -2,6 +2,11 @@
 
 @{
     ViewData["Title"] = "Sign up Form";
+    ViewBag.SexList = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Male", Text = "Male" },
+        new SelectListItem { Value = "Female", Text = "Female" }
+    };
 }
 
 <div class="signup-form">
@@ -48,7 +53,7 @@
                 <div class="col-2">
                     <label asp-for="userInfo.sex">Sex</label>
                     <span>:</span>
-                    <input type="text" asp-for="userInfo.sex" />
+                    <select asp-for="userInfo.sex" asp-items="@ViewBag.SexList" class="form-control"></select>
                 </div>
                 <div class="col-2">
                     <label asp-for="userInfo.birthday">Birthday</label>
